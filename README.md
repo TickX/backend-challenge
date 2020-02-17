@@ -38,9 +38,11 @@ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
 
 Your command _must_:
 1. Scrape the first 20 results which appear on the page
-3. Persist the scraped events to a database
+3. Persist the scraped events to a MySQL database
 4. Be safe to run multiple times
 5. Be able to update existing events, add new ones, and/or delete removed events
+
+We will be testing the output of your command by running it and observing the resulting DB entries.
 
 ## Usage
 
@@ -53,12 +55,16 @@ $ php bin/console scrape
 Hello TickX!
 ```
 
-**Note:** If you don't have PHP installed locally, you can run your command inside the docker container
-(see [Docker Tips](#tips)).
-
 ### Docker
 
-This template comes preconfigured with a `docker-compose` file that spins up a PHP and MySQL instance.
+**Note:** This section is optional; If you're not familiar with Docker, are finding difficulties using it, or just
+don't think you need it, you may skip this and instead just run/test your work directly on your machine.
+
+This template comes preconfigured with a `docker-compose` file that spins up a PHP development instance and MySQL DB.
+You can use these to run, test, and reset your application with ease.
+
+For example, if you don't have PHP installed locally, you can run your scrape command inside the docker container.
+Or if you would like to restart with a fresh DB, you can just `down` then `up` your containers again.
 
 #### Tips
 
@@ -71,5 +77,6 @@ $ docker-compose up # Starts containers (use with `-d` flag to run in background
 $ docker-compose down # Stops containers
 $ docker ps # Displays running containers
 $ docker exec -it {container_id} bash # Starts an interactive shell inside the specified container
+$ docker exec {container_id} {shell_command} # Runs a shell command inside the specified container
 $ docker cp /path/to/file {container_id}:desired/path/filename # Copies files between your local machine and docker container
 ```
