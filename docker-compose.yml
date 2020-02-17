@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7.26
+    ports:
+      - "3320:3306"
+    environment:
+      MYSQL_DATABASE: "tickx"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
