@@ -1,13 +1,21 @@
 # TickX Backend Technical Challenge
 
-## Installation
+Please read this document carefully before beginning.
 
-Click the `Use this template` button to create your own project based on this template, then clone your repo
-to your local machine to start developing. For usage instructions, see the [Usage section](#usage).
+You are required to use PHP to complete the following task, and are encouraged to use any libraries that you
+feel may need. You may also alter this template however you see fit to complete the task.
 
-## Brief
+Rather than just a complete solution, we're more interested in:
+- Good quality code (readable, maintainable, and structured)
+- Code that runs, and outputs something useful
+- Clean and informative Git history
 
-Write a PHP command that extracts the following information from the TickX website:
+We realise that the allocated time is short, and do not necessarily expect you to fulfill all of the requirements, so
+keep the above points in mind and have fun!
+
+## Task
+
+Write a command that extracts the following information from the TickX website:
 - Title
 - Date
 - Time
@@ -16,35 +24,35 @@ Write a PHP command that extracts the following information from the TickX websi
 - Array of ticket prices available (bonus points for getting ticket seller and buy link as well)
 - Venue Name
 
-**Note:** You may fetch more details than the ones specified above.
-
 ### Instructions
 
-1. Scrape event information off of the [Manchester listings page](https://www.tickx.co.uk/manchester/gigs/)
-2. Loop through the results from this page, then scrape each event's details page
-(`https://www.tickx.co.uk/event/:event_id/`) to get the required details
+Scrape event information off of the [Manchester listings page](https://www.tickx.co.uk/manchester/gigs/),
+then loop through the results and scrape each event's details page (`https://www.tickx.co.uk/event/:event_id/`)
+to get the required details.
 
-#### Rules:
-
-- You are free to alter this template however you see fit
-- You are free to use any composer dependency to complete the task
-- Please don’t use the JSON included on the listing page as this would make things too easy :slightly_smiling_face:
-- If you use `CURL` for fetching web pages, don’t worry about verifying SSL. Example:
-```php
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-```
-
-### Acceptance Criteria
-
-Your command _must_:
+Your command _should_:
 1. Scrape the first 20 results which appear on the page
 3. Persist the scraped events to a MySQL database
 4. Be safe to run multiple times
 5. Be able to update existing events, add new ones, and/or delete removed events
 
+Please don’t use the JSON included on the listing page as this would make things too easy :)
+
 We will be testing the output of your command by running it and observing the resulting DB entries.
 
-## Usage
+**Note:** If you use `CURL` for fetching web pages, don’t worry about verifying SSL. Example:
+```php
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+```
+
+## Template
+
+### Installation
+
+Click the `Use this template` button to create your own project based on this template, then clone your repo
+to your local machine to start developing.
+
+### Usage
 
 This template comes preconfigured with [`symfony-console`](https://github.com/symfony/console). A basic command,
 `/TickX/Scraper/Command/ScrapeCommand`, has been created for you to start writing your code.
@@ -55,7 +63,7 @@ $ php bin/console scrape
 Hello TickX!
 ```
 
-### Docker
+#### Docker
 
 **Note:** This section is optional; If you're not familiar with Docker, are finding difficulties using it, or just
 don't think you need it, you may skip this and instead just run/test your work directly on your machine.
@@ -66,7 +74,7 @@ You can use these to run, test, and reset your application with ease.
 For example, if you don't have PHP installed locally, you can run your scrape command inside the docker container.
 Or if you would like to restart with a fresh DB, you can just `down` then `up` your containers again.
 
-#### Tips
+##### Tips
 
 Here are the download links for [Docker](https://docs.docker.com/install/) and
 [Docker Compose](https://docs.docker.com/compose/install/).
