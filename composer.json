@@ -1,5 +1,5 @@
 {
-    "name": "tickx/scraper-challenge",
+    "name": "tickx/backend-challenge",
     "type": "template",
     "require": {
         "symfony/console": "^5.0"
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TickX\\Scraper\\": "src/code/"
+            "TickX\\Challenge\\": "src/code/"
         }
     },
     "scripts": {
