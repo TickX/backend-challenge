@@ -15,7 +15,7 @@ keep the above points in mind and have fun!
 
 ## Task
 
-Write a command that extracts the following information from the TickX website:
+Write a command that extracts the following information from the TickX API:
 - Title
 - Date
 - Time
@@ -26,24 +26,18 @@ Write a command that extracts the following information from the TickX website:
 
 ### Instructions
 
-Scrape event information off of the [Manchester listings page](https://www.tickx.co.uk/manchester/gigs/),
-then loop through the results and scrape each event's details page (`https://www.tickx.co.uk/event/:event_id/`)
-to get the required details.
+Use the TickX API to fetch data for Manchester events and their corresponding tickets. The endpoints you'll need to
+use are:
+- http://api-1.tickx.co.uk/v4/cities/manchester
+- http://api-1.tickx.co.uk/v4/event/:eventId/tickets
 
 Your command _should_:
-1. Scrape the first 20 results which appear on the page
-3. Persist the scraped events to a MySQL database
+1. Fetch the first 20 results which appear on the page
+3. Persist the events to a SQL database
 4. Be safe to run multiple times
 5. Be able to update existing events, add new ones, and/or delete removed events
 
-Please don’t use the JSON included on the listing page as this would make things too easy :)
-
 We will be testing the output of your command by running it and observing the resulting DB entries.
-
-**Note:** If you use `CURL` for fetching web pages, don’t worry about verifying SSL. Example:
-```php
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-```
 
 ## Template
 
@@ -55,11 +49,11 @@ to your local machine to start developing.
 ### Usage
 
 This template comes preconfigured with [`symfony-console`](https://github.com/symfony/console). A basic command,
-`/TickX/Scraper/Command/ScrapeCommand`, has been created for you to start writing your code.
+`/TickX/Challenge/Command/RunCommand`, has been created for you to start writing your code.
 
 To run your command, run the console executable followed by the command's name:
 ```shell script
-$ php bin/console scrape
+$ php bin/console run
 Hello TickX!
 ```
 
@@ -71,7 +65,7 @@ don't think you need it, you may skip this and instead just run/test your work d
 This template comes preconfigured with a `docker-compose` file that spins up a PHP development instance and MySQL DB.
 You can use these to run, test, and reset your application with ease.
 
-For example, if you don't have PHP installed locally, you can run your scrape command inside the docker container.
+For example, if you don't have PHP installed locally, you can run your command inside the docker container.
 Or if you would like to restart with a fresh DB, you can just `down` then `up` your containers again.
 
 ##### Tips
