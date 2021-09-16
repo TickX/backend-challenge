@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8-fpm
 
 WORKDIR /var/www
 
@@ -15,7 +15,7 @@ RUN curl -s https://getcomposer.org/installer | php -- \
         --install-dir=/usr/local/bin \
         --filename=composer
 
-RUN docker-php-ext-install mbstring pdo_mysql
+RUN docker-php-ext-install mbstring zip json
 
 RUN pecl config-set php_ini /etc/php.ini
 
